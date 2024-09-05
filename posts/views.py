@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from .models import Post, CustomUser
 from django.contrib.auth.decorators import login_required
@@ -20,6 +20,16 @@ def create_post(request):
     else:
         form = PostForm()
     return render(request, 'create_post.html', {'form': form})
+
+
+def follow_unfollow_user(request, id):
+    user_to_follow = get_object_or_404(CustomUser, id=id)
+    if user_to_follow in request.user.following.all():
+        request.user.following.remove(user_to_follow)
+    else:
+        request.user.following.add(user_to_follow)
+
+    return redirect('home')
 
 
 @login_required
