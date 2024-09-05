@@ -1,0 +1,171 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and basic typography */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f8fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #1da1f2;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e1e8ed;
+}
+
+.navbar .navbar-brand {
+    font-size: 24px;
+    color: #1da1f2;
+    font-weight: bold;
+}
+
+.navbar .navbar-nav {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .navbar-nav li {
+    display: inline;
+}
+
+.navbar .navbar-nav a {
+    color: #657786;
+    font-weight: 500;
+}
+
+.navbar .navbar-nav a:hover {
+    color: #1da1f2;
+}
+
+/* Container */
+.container {
+    width: 30%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Footer */
+.footer {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #e1e8ed;
+    margin-top: 40px;
+    color: #657786;
+}
+
+/* Forms */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form input[type="text"],
+form input[type="file"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccd6dd;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #1da1f2;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0c85d0;
+}
+
+/* Posts (timeline) */
+.post {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e1e8ed;
+}
+
+.post img {
+    max-width: 50%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.post .post-caption {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.post .post-tags {
+    font-size: 14px;
+    color: #657786;
+}
+
+.post .post-author {
+    font-weight: bold;
+    color: #1da1f2;
+}
+
+.post .post-timestamp {
+    font-size: 12px;
+    color: #657786;
+}
+
+/* Buttons */
+.button-follow {
+    background-color: #1da1f2;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.button-follow:hover {
+    background-color: #0c85d0;
+}
+
+.button-unfollow {
+    background-color: #e0245e;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.button-unfollow:hover {
+    background-color: #b81c47;
+}

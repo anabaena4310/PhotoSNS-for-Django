@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Photo SNS{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="" class="navbar-brand">MyPhotoSNS</a>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li><a href="">Profile</a></li>
+                        <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                        <li><a href="{% url 'account_login' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        <!-- 各テンプレートでコンテンツがここに挿入される -->
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 My Photo SNS. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

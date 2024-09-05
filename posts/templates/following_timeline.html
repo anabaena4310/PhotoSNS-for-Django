@@ -1,0 +1,16 @@
+<!-- templates/following_timeline.html -->
+
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Following Timeline</h2>
+  {% for post in posts %}
+    <div class="post">
+      <h3>{{ post.user.username }}</h3>
+      <img src="{{ post.image.url }}" alt="Post image">
+      <p>{{ post.caption }}</p>
+      <p>Tags: {{ post.tags }}</p>
+      <p>Posted at {{ post.created_at }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}
