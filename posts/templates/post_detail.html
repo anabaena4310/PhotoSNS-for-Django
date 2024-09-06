@@ -1,24 +1,23 @@
-{% extends "base_generic.html" %}
+<!-- templates/posts/post_detail.html -->
+
+{% extends 'base_generic.html' %}
 
 {% block content %}
-<h2>{{ post.author.username }}'s Post</h2>
-<img src="{{ post.image.url }}" alt="Post image">
-<p>{{ post.caption }}</p>
-<p>Tags: {{ post.tags }}</p>
+<div 
+  <h2>{{ post.user.username }}'s Post</h2>
+  <img class="post_detail" src="{{ post.image.url }}" alt="Post image">
+  <p>{{ post.caption }}</p>
+  <p>Tags: {{ post.tags }}</p>
+  <p>Posted by {{ post.user.username }} at {{ post.created_at }}</p>
 
-<p>Posted by {{ post.author.username }} at {{ post.created_at }}</p>
-
-{% if user != post.author %}
-  {% if user.following.filter(following=post.author).exists %}
-    <form method="post" action="{% url 'follow_unfollow_user' post.author.username %}">
+  {% if user != post.user %}
+    <form method="post" action="{% url 'follow_unfollow_user' post.id %}">
       {% csrf_token %}
-      <button type="submit" class="button-unfollow">Unfollow</button>
-    </form>
-  {% else %}
-    <form method="post" action="{% url 'follow_unfollow_user' post.author.username %}">
-      {% csrf_token %}
-      <button type="submit" class="button-follow">Follow</button>
+      {% if is_following %}
+        <button type="submit" class="button-unfollow">Unfollow</button>
+      {% else %}
+        <button type="submit" class="button-follow">Follow</button>
+      {% endif %}
     </form>
   {% endif %}
-{% endif %}
 {% endblock %}

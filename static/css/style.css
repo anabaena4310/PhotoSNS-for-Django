@@ -74,10 +74,8 @@ a:hover {
 
 /* Forms */
 form {
-    background-color: #ffffff;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
@@ -168,4 +166,11 @@ form button:hover {
 
 .button-unfollow:hover {
     background-color: #b81c47;
+}
+
+.post_detail {
+    width: 200%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
 }

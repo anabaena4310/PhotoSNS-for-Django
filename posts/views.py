@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
-from .models import Post, CustomUser
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
+from .models import Post, CustomUser
 
 
 def home(request):
@@ -23,13 +23,14 @@ def create_post(request):
 
 
 def follow_unfollow_user(request, id):
-    user_to_follow = get_object_or_404(CustomUser, id=id)
+    user_id = Post.objects.get(id=id).user.id
+    user_to_follow = get_object_or_404(CustomUser, id=user_id)
     if user_to_follow in request.user.following.all():
         request.user.following.remove(user_to_follow)
     else:
         request.user.following.add(user_to_follow)
 
-    return redirect('home')
+    return redirect('post_detail', post_id=id)
 
 
 @login_required
@@ -38,3 +39,13 @@ def following_timeline(request):
     following_users = user.following.all()
     posts = Post.objects.filter(user__in=following_users).order_by('-created_at')
     return render(request, 'following_timeline.html', {'posts': posts})
+
+
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    is_following = post.user in request.user.following.all() if request.user.is_authenticated else False
+
+    return render(request, 'post_detail.html', {
+        'post': post,
+        'is_following': is_following,
+    })
