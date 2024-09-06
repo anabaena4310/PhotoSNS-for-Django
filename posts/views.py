@@ -43,7 +43,7 @@ def following_timeline(request):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    is_following = post.user in request.user.following.all() if request.user.is_authenticated else False
+    is_following = post.user in request.user.following.all()
 
     return render(request, 'post_detail.html', {
         'post': post,
